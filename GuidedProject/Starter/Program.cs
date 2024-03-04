@@ -161,6 +161,34 @@ do
                         }
                     } while (validEntry == false);
 
+                    // build the animal the ID number - for example C1, C2, D3 (for Cat 1, Cat 2, Dog 3)
+                    animalID = animalSpecies.Substring(0, 1) + (petCount + 1).ToString();
+
+                    // get the pet's age. can be ? at initial entry. 
+                    do
+                    {
+                        int petAge;
+
+                        Console.WriteLine("Enter the pet's age or enter ? if unknown");
+                        readResult = Console.ReadLine();
+
+                        if (readResult != null)
+                        {
+                            animalAge = readResult;
+
+                            if (animalAge != "?")
+                            {
+                                validEntry = int.TryParse(animalAge, out petAge);
+                            }
+                            else
+                            {
+                                validEntry = true;
+                            }
+
+                        }
+
+                    } while (validEntry == false);
+
                     // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
                     petCount++;
                     // check maxPet limit
